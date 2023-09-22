@@ -1,0 +1,19 @@
+cmd prmpt
+
+
+# start server
+npm start
+
+# install
+npm install react-router-dom
+
+git status
+
+git remote rm origin
+
+git init
+
+git --version
+
+git remote add origin
+
