@@ -34,6 +34,8 @@ function App() {
   );
 }
 
+//too nervous to wreck this to make any real changes
+
 export default App;
 
 //create the footer componenet and import the footer component, please

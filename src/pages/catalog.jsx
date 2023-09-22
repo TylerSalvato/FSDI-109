@@ -3,6 +3,8 @@ import DataService from "../services/dataService";
 import "./catalog.css";
 import { useEffect, useState } from "react";
 
+//too nervous to wreck this to make any real changes
+
 function Catalog(props){
 
     let [products, setProducts] = useState([]);
@@ -69,3 +71,4 @@ function Catalog(props){
 }
 
 export default Catalog;
+
