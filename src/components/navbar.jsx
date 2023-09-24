@@ -1,9 +1,12 @@
+import { useContext } from 'react';
+import StoreContext from '../state/storeContext';
 import "./navbar.css";
 
 import {Link} from 'react-router-dom';
 
-function Navbar()
-{
+function Navbar(){
+    let user = useContext(StoreContext).user;
+
     return (
 <nav className="navbar navbar-expand-lg">
   <div className="container-fluid">
@@ -43,23 +46,15 @@ function Navbar()
             Admin
           </Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="/cart">
-            Cart
-          </Link>
-        </li>
         
       </ul>
       <form className="d-flex" role="search">
-        <input
-          className="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button className="btn btn-outline-success" type="submit">
-          Search
-        </button>
+        <div className="user-info">
+        <label>{user.name}</label><i class="fa-regular fa-circle-user"></i></div>
+        
+        <Link className="btn btn-outline-success" to="/cart">
+          Cart<i class="fa-solid fa-cart-shopping"></i>
+        </Link>
       </form>
     </div>
   </div>
