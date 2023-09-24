@@ -1,16 +1,31 @@
 import "./product.css";
 import QuantityPicker from '../components/quantityPicker';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 //when the component is loaded, console.log("component loaded");
 
 
 function Product(props){
+    const [quantity, setQuantity] = useState(1);
 
     useEffect(function(){
         //when the component is loaded
         console.log("component loaded");
     },[]);
+
+    function onQuantityChange(value){
+        console.log('quantity has changed', value);
+        setQuantity(value);
+    }
+
+    function getTotal(){
+        const total = quantity * props.data.price;
+        return total.toFixed(2);
+    }
+
+    function handleAdd(){
+        console.log("a message");
+    }
 
     return(
         <div className="product">
@@ -20,21 +35,34 @@ function Product(props){
 
             <div className='prices'>
             <label className="price"> ${props.data.price.toFixed(2)} </label>
-            <label className="total"> ${props.data.price.toFixed(2)} </label>
+            <label className="total"> ${getTotal()} </label>
             <label> Total </label>
             </div>
 
             {/*here we want to add the Qt-picker*/}
-            <QuantityPicker/>
-            <button className="btn btn-sm btn-success">Add</button>
+            <QuantityPicker onChange={onQuantityChange}/>
+            
+
+            <button onClick={handleAdd} className="btn btn-sm btn-success">Add</button>
 
         </div>
         
-    )
+    );
 
 }
 
 export default Product;
+
+
+/**
+ * 
+ * 
+ * click on the button
+ * call a function ('handleAdd')
+ * the function should console log a message
+ * 
+ */
+
 //create a Product component inside of the -- clear
 //components folder (with a h5 for the title) -- clear
 //render a <QuantityPicker/> inside of Product -- clear
