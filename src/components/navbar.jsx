@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 
 function Navbar(){
     let user = useContext(StoreContext).user;
+    let cart = useContext(StoreContext).cart;
 
     return (
 <nav className="navbar navbar-expand-lg">
@@ -53,7 +54,8 @@ function Navbar(){
         <label>{user.name}</label><i class="fa-regular fa-circle-user"></i></div>
         
         <Link className="btn btn-outline-success" to="/cart">
-          Cart<i class="fa-solid fa-cart-shopping"></i>
+          {cart.length}
+          <i class="fa-solid fa-cart-shopping"></i>
         </Link>
       </form>
     </div>

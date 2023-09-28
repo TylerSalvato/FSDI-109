@@ -1,12 +1,15 @@
 import "./product.css";
 import QuantityPicker from '../components/quantityPicker';
-import { useEffect, useState } from "react";
+import StoreContext from "../state/storeContext";
+import { useContext, useEffect, useState } from "react";
 
 //when the component is loaded, console.log("component loaded");
 
 
 function Product(props){
     const [quantity, setQuantity] = useState(1);
+
+    const addProductToCart = useContext(StoreContext).addProductToCart; 
 
     useEffect(function(){
         //when the component is loaded
@@ -25,6 +28,9 @@ function Product(props){
 
     function handleAdd(){
         console.log("a message");
+        let prodForCart = {...props.data}; // copy an object
+        prodForCart.quantity = quantity;
+        addProductToCart(prodForCart);
     }
 
     return(
@@ -36,7 +42,6 @@ function Product(props){
             <div className='prices'>
             <label className="price"> ${props.data.price.toFixed(2)} </label>
             <label className="total"> ${getTotal()} </label>
-            <label> Total </label>
             </div>
 
             {/*here we want to add the Qt-picker*/}
